@@ -1,8 +1,8 @@
 import { useEffect, useState} from 'react';
-import { getAllGames } from '../services/gamesService.jsx';
+import { getAllGames } from '../services/gamesService.js';
 import GameCard from '../componentes/gameCard.jsx';
 
-function inicio() {
+function Inicio() {
 
     const [games, setGames] = useState([]);
 
@@ -29,4 +29,4 @@ function inicio() {
         </div>
     );
 }
-export default inicio;
+export default Inicio;

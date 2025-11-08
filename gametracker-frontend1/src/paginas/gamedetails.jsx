@@ -1,55 +1,44 @@
-import { useEffects, useState} from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getGameById } from "../api/juegos"
-import axios from "axios";
+import { obtenerJuegoPorId } from "../api/juegos";
 
-function gamedetails() {
- const { id } = useParams();
- const [game, setGame] = useState(null);
- const [review, serReview] = useState("");
+function GameDetails() {
+  const { id } = useParams(); 
+  const [game, setGame] = useState(null); 
+  const [review, setReview] = useState(""); 
+  const [reviews, setReviews] = useState([]); 
 
+ 
+  useEffect(() => {
+    const fetchGame = async () => {
+      try {
+        const data = await obtenerJuegoPorId(id);
+        setGame(data);
+        setReviews(data.reviews || []); 
+      } catch (error) {
+        console.error("Error al cargar el juego:", error);
+      }
+    };
+    fetchGame();
+  }, [id]);
+
+  if (!game) return <p>Cargando juego...</p>;
+
+  return (
+    <div>
+      <h2>{game.titulo}</h2>
+      <p>{game.descripcion}</p>
+
+      <h3>Reseñas:</h3>
+      <ul>
+        {reviews.length > 0 ? (
+          reviews.map((r, index) => <li key={index}>{r}</li>)
+        ) : (
+          <li>No hay reseñas aún.</li>
+        )}
+      </ul>
+    </div>
+  );
 }
 
- useEffect => {
-    const fetchGame = async () => {
-        try {
-            const data = await getGameById(id);
-            setGame(data);
-            setReviews(data.reviews || []);
-        } catch (error) {
-            console.error("Error al cargar el juego")
-
-        }
-        };
-        fetchGame();
-    } 
-    
-
-
-    const handleReviewSubmit = async (e) => {
-        e.preventDefault();
-        if (!review.trim()) return;
-
-    }
-
-    try {
-        const res = await axios.post('http://localhost:5173/')
-        text: review,
-    
-         
-      setReviews(res.data.reviews); // actualiza lista con la nueva
-      setReview("");
-     
-    
-
- if (!game) 
-    
-    return (
-        <div>
-            src={game.image}
-            alt={game.title}
-        </div>
-    
-    )}
-
-export default gamedetails
+export default GameDetails;
