@@ -10,7 +10,7 @@ function GameDetails() {
 
  
   useEffect(() => {
-    const fetchGame = async () => {
+    const CargarJuego = async () => {
       try {
         const data = await obtenerJuegoPorId(id);
         setGame(data);
@@ -19,10 +19,25 @@ function GameDetails() {
         console.error("Error al cargar el juego:", error);
       }
     };
-    fetchGame();
+    CargarJuegoa();
   }, [id]);
 
-  if (!game) return <p>Cargando juego...</p>;
+  const AgregarReview = async() => {
+    if (!nuevaReview.trim()) return;
+
+     try {
+      const res = await axios.post(`http://localhost:3000/api/reseñas`, {
+        juegoId: id,
+        texto: nuevaReview,
+      });
+
+       setReviews([...reviews, res.data.texto]);
+      setNuevaReview("");
+    } catch (error) {
+      console.error("Error al agregar la reseña:", error);
+    }
+  };
+
 
   return (
     <div>
@@ -36,8 +51,18 @@ function GameDetails() {
         ) : (
           <li>No hay reseñas aún.</li>
         )}
+ <div className="agregar-review">
+        <textarea
+          value={nuevaReview}
+          onChange={(e) => setNuevaReview(e.target.value)}
+          placeholder="Escribe tu reseña..."
+        />
+        <button onClick={agregarReview}>Enviar reseña</button>
+
+</div>
       </ul>
     </div>
+
   );
 }
 
