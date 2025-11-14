@@ -1,68 +1,77 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import axios from "axios";
+import { obtenerResenasPorJuego, agregarResena } from "../api/Resenas";
 import { obtenerJuegoPorId } from "../api/juegos";
 
 function GameDetails() {
-  const { id } = useParams(); 
-  const [game, setGame] = useState(null); 
-  const [review, setReview] = useState(""); 
-  const [reviews, setReviews] = useState([]); 
+  const { id } = useParams();
+  const [juego, setJuego] = useState(null);
+  const [reseñas, setReseñas] = useState([]);
+  const [nueva, setNueva] = useState("");
+  const [cargando, setCargando] = useState(true);
 
- 
   useEffect(() => {
-    const CargarJuego = async () => {
+    const cargar = async () => {
       try {
-        const data = await obtenerJuegoPorId(id);
-        setGame(data);
-        setReviews(data.reviews || []); 
-      } catch (error) {
-        console.error("Error al cargar el juego:", error);
+        const j = await obtenerJuegoPorId(id);
+        setJuego(j);
+        const r = await obtenerResenasPorJuego(id);
+        setReseñas(r);
+      } catch (err) {
+        console.error("Error cargar detalles:", err);
+      } finally {
+        setCargando(false);
       }
     };
-    CargarJuegoa();
+    cargar();
   }, [id]);
 
-  const AgregarReview = async() => {
-    if (!nuevaReview.trim()) return;
-
-     try {
-      const res = await axios.post(`http://localhost:3000/api/reseñas`, {
-        juegoId: id,
-        texto: nuevaReview,
-      });
-
-       setReviews([...reviews, res.data.texto]);
-      setNuevaReview("");
-    } catch (error) {
-      console.error("Error al agregar la reseña:", error);
+  const handleEnviar = async () => {
+    if (!nueva.trim()) return;
+    try {
+      const payload = {
+        nombreUsuario: "Usuario anónimo",
+        clasificacion: 5,
+        comentario: nueva,
+        juegoid: id,
+      };
+      const created = await agregarResena(payload);
+      setReseñas((p) => [created, ...p]);
+      setNueva("");
+    } catch (err) {
+      console.error("Error al enviar reseña:", err);
     }
   };
 
+  if (cargando) return <p>Cargando...</p>;
+  if (!juego) return <p>Juego no encontrado</p>;
 
   return (
-    <div>
-      <h2>{game.titulo}</h2>
-      <p>{game.descripcion}</p>
+    <div className="detalle-container">
+      <div className="detalle-card">
+        <h2>{juego.titulo}</h2>
+        <p>{juego.descripcion}</p>
 
-      <h3>Reseñas:</h3>
-      <ul>
-        {reviews.length > 0 ? (
-          reviews.map((r, index) => <li key={index}>{r}</li>)
+        <h3>Reseñas</h3>
+        {reseñas.length ? (
+          <ul>
+            {reseñas.map((r) => (
+              <li key={r._id}>
+                <strong>{r.nombreUsuario}</strong> ({r.clasificacion}/5) — {r.comentario}
+              </li>
+            ))}
+          </ul>
         ) : (
-          <li>No hay reseñas aún.</li>
+          <p>No hay reseñas aún.</p>
         )}
- <div className="agregar-review">
-        <textarea
-          value={nuevaReview}
-          onChange={(e) => setNuevaReview(e.target.value)}
-          placeholder="Escribe tu reseña..."
-        />
-        <button onClick={agregarReview}>Enviar reseña</button>
 
-</div>
-      </ul>
+        <textarea value={nueva} onChange={(e) => setNueva(e.target.value)} />
+        <button onClick={handleEnviar}>Enviar reseña</button>
+
+        <Link to="/">← Volver</Link>
+      </div>
     </div>
-
   );
 }
 

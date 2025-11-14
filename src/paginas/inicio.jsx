@@ -1,35 +1,41 @@
 import { useEffect, useState } from "react";
-import { obtenerJuegos } from "../api/juegos.js";
-import GameCard from "../componentes/GameCard.jsx";
+import { obtenerJuegos } from "../api/juegos";
+import GameCard from "../componentes/gamecard";
+import "../index.css";
 
 function Inicio() {
   const [juegos, setJuegos] = useState([]);
+  const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
     const cargarJuegos = async () => {
       try {
         const data = await obtenerJuegos();
-        console.log("Datos recibidos:", data);
+        console.log("🎮 Juegos cargados:", data);
         setJuegos(data);
-
-
       } catch (error) {
-        console.error("Error al obtener los juegos:", error);
+        console.error("❌ Error al cargar los juegos:", error);
+      } finally {
+        setCargando(false);
       }
     };
     cargarJuegos();
   }, []);
 
+  if (cargando) return <p>Cargando juegos...</p>;
+
   return (
-    <div className="inicio">
-      <h2>Juegos disponibles</h2>
-      <div className="juegos-grid">
-        {juegos.map((juego) => (
+    <div className="juegos-grid">
+      {juegos.length === 0 ? (
+        <p>No hay juegos disponibles.</p>
+      ) : (
+        juegos.map((juego) => (
           <GameCard key={juego._id} juego={juego} />
-        ))}
-      </div>
+        ))
+      )}
     </div>
   );
 }
 
 export default Inicio;
+

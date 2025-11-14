@@ -4,6 +4,7 @@ import GameDetails from "./paginas/gamedetails.jsx";
 import Categorias from "./paginas/categorias.jsx";
 import Navbar from "./componentes/Navbar.jsx";
 import "./index.css";
+import "./App.css";
 
 function App() {
   return (
@@ -12,27 +13,22 @@ function App() {
         <h1>ArcadiaLand</h1>
       </header>
 
-      <main className="seccion">
+      <main className="titulo1">
         <p>¡Bienvenidos a la mejor biblioteca de juegos!</p>
-
-        <Navbar />
+      </main>
+      <section className="seccion">
+ <Navbar className="menu"/>
 
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/gamedetails/:id" element={<GameDetails />} />
           <Route path="/categorias/:categoria" element={<Categorias />} />
-        </Routes>
-      </main>
-
- <main className="seccion">
-        <Routes>
-          <Route path="/" element={<Inicio />} />
+          <Route path="/resenas/:id" element={<GameDetails />} />
           <Route path="/gamedetails/:id" element={<GameDetails />} />
         </Routes>
-      </main>
-      
+      </section>
     </div>
   );
-}
+} 
 
 export default App;

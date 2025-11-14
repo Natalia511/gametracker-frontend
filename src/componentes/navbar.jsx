@@ -2,27 +2,11 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav
-      style={{
-        background: "#222",
-        color: "white",
-        padding: "10px 20px",
-        display: "flex",
-        gap: "20px",
-      }}
-    >
-      <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-        Inicio
-      </Link>
-      <Link to="/categorias/accion" style={{ color: "white", textDecoration: "none" }}>
-        Categorías
-      </Link>
-      <Link to="/mibiblioteca" style={{ color: "white", textDecoration: "none" }}>
-        Mi Biblioteca
-      </Link>
-      <Link to="/perfil" style={{ color: "white", textDecoration: "none" }}>
-        Perfil
-      </Link>
+    <nav className="bg-gray-800 flex justify-center gap-6 py-3 shadow-md">
+      <Link className="hover:text-yellow-400" to="/">Inicio</Link>
+      <Link className="hover:text-yellow-400" to="/categorias/Acción">Categorías</Link>
+      <Link className="hover:text-yellow-400" to="/biblioteca">Mi Biblioteca</Link>
+      <Link className="hover:text-yellow-400" to="/perfil">Perfil</Link>
     </nav>
   );
 }

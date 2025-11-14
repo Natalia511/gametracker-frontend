@@ -1,38 +1,84 @@
-.App {
+
+
+.games-container {
+  gap: 20px;
+   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-items: center;
+  justify-items: center;
+  padding: 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.game-card {
+  background-color: #cecef1;
+  border-radius: 15px;
+  padding: 20px;
   text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  width: 250px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.game-card h3 {
+  margin-bottom: 10px;
+  color: #161818;
 }
 
-.App-header {
-  background-color: #282c34;
+.game-card p {
+  color: #48456d;
+  font-size: 0.95rem;
+}
+
+.game-card a {
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: none;
+  color: #1305da;
+  font-weight: bold;
+}
+.titulo1 {
+  text-align: center;
+  color: #333;
+  margin-top: 60px;
+}
+.app-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #8dacda;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.Header {
+  background-color: #4a90e2;
   color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.App-link {
-  color: #61dafb;
+.titulo1 p {
+  font-size: 1.2rem;
+  color: #010c18;
+  background-color: #eaeef3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.seccion {
+  padding: 20px;
+  color: #942068;
+  text-align: center;
+  font-size: 1.1rem;
+  background-color: #acc2df;
 }
+
+.menu {
+  background-color: #354f7b;
+  padding: 10px 0;
+  margin-top: 20px;
+} 
+
