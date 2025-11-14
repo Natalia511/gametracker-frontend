@@ -1,0 +1,33 @@
+.lista-categorias {
+  padding: 10px;
+  text-align: center;
+  color: seagreen;
+  font-size: 2.5rem;
+}
+.lista-categorias ul {
+  list-style: none;
+  padding: 0;
+  color: rgb(141, 25, 250);
+}
+
+.lista-categorias li {
+  margin: 8px 0;
+}
+
+.lista-categorias a {
+  color: #568a56;
+  text-decoration: none;
+  font-size: 2.0rem;
+}
+
+.lista-categorias a:hover {
+  text-decoration: underline;
+}
+.lista-categorias-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  border: 3px solid #e5e5e5; 
+  border-radius: 20px;        
+  background: #b40a0a;        
+}
