@@ -1,0 +1,72 @@
+.detalle-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.detalle-card {
+  background: #bbc0e9;
+  color: rgb(10, 4, 71);
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+
+.detalle-card h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.detalle-card p {
+  color: #03364e;
+}
+
+.detalle-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.detalle-card li {
+  background: #9492f5;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.detalle-card textarea {
+  width: 100%;
+  background: #afb7da;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.detalle-card button {
+  margin-top: 10px;
+  background: #facc15;
+  color: black;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.detalle-card button:hover {
+  background: #260342;
+}
+
+.detalle-card a {
+  margin-top: 15px;
+  display: inline-block;
+  color: #314096;
+}
+
+.detalle-card a:hover {
+  color: #14286b;
+}
