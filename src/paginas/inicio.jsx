@@ -25,7 +25,7 @@ function Inicio() {
   if (cargando) return <p>Cargando juegos...</p>;
 
   return (
-    <div className="juegos-grid">
+    <div className="games-container">
       {juegos.length === 0 ? (
         <p>No hay juegos disponibles.</p>
       ) : (

@@ -5,6 +5,7 @@ import Categorias from "./paginas/categorias.jsx";
 import Navbar from "./componentes/Navbar.jsx";
 import "./index.css";
 import "./App.css";
+import "./paginas/categorias.css";
 
 function App() {
   return (
