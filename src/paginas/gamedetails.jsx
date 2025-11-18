@@ -52,8 +52,12 @@ function GameDetails() {
       <div className="detalle-card">
         <h2>{juego.titulo}</h2>
         <p>{juego.descripcion}</p>
+        <img src={juego.imagen} alt={juego.titulo} className="game-image" />
+        <h4>Plataforma: {juego.plataforma}</h4>
+        <h4>Lanzamiento: {new Date(juego.lanzamiento).getFullYear()}</h4>
+        <h4>Desarrollador: {juego.desarrollador}</h4>
 
-        <h3>Reseñas</h3>
+        <h2>Reseñas</h2>
         {reseñas.length ? (
           <ul>
             {reseñas.map((r) => (
