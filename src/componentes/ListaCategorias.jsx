@@ -4,12 +4,18 @@ import "./ListaCategorias.css";
 function ListaCategorias() {
   const categorias = [
     "accion",
+    "multijugador",
     "aventura",
     "autos",
     "estrategia",
     "deportes",
     "terror",
-    "rol"
+    "rol",
+    "moda",
+    "musica",
+    "simulacion",
+    "cocina",
+    "infantil"
   ];
 
   return (

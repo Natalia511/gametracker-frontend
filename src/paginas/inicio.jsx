@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { obtenerJuegos } from "../api/juegos";
 import GameCard from "../componentes/gamecard";
-import "../index.css";
 
 function Inicio() {
   const [juegos, setJuegos] = useState([]);

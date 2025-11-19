@@ -1,0 +1,25 @@
+.boton-eliminar {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.game-card-biblioteca {
+  background: #d1e7ff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.bibloteca {
+  max-width: 1200px;
+  font-size: 2rem;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #d6216cff;
+}

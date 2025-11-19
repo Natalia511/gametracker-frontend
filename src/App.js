@@ -18,4 +18,5 @@ function App() { return ( <div className="app-container">
        </Routes> </main> <main className="seccion"> <Routes> 
         <Route path="/" element={<Inicio />} /> 
         <Route path="/gamedetails/:id" element={<GameDetails />} /> 
+        
         </Routes> </main> </div> ); } export default App;

@@ -4,8 +4,8 @@ import GameDetails from "./paginas/gamedetails.jsx";
 import Categorias from "./paginas/categorias.jsx";
 import Navbar from "./componentes/Navbar.jsx";
 import ListaCategorias from "./componentes/ListaCategorias.jsx";
+import Biblioteca from "./paginas/bibloteca.jsx";
 
-import "./index.css";
 import "./App.css";
 import "./paginas/categorias.css";
 
@@ -32,6 +32,7 @@ function App() {
 
           <Route path="/gamedetails/:id" element={<GameDetails />} />
           <Route path="/resenas/:id" element={<GameDetails />} />
+          <Route path="/biblioteca" element={<Biblioteca />} />
         </Routes>
       </section>
     </div>
