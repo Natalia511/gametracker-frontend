@@ -6,7 +6,7 @@ function Biblioteca() {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("biblioteca")) || [];
-    console.log("Biblioteca cargada:", data); // DEBUG
+    console.log("Biblioteca cargada:", data); 
     setJuegos(data);
   }, []);
 
@@ -19,7 +19,7 @@ function Biblioteca() {
       ) : (
         juegos.map((juego) => (
           <div key={juego._id} className="game-card-biblioteca">
-            <img src={juego.imagen} alt={juego.titulo} className="game-image-bibloteca" />
+            <img src={juego.imagen} alt={juego.titulo} className="imagenes" />
             <h3>{juego.titulo}</h3>
             <p>{juego.descripcion}</p>
 

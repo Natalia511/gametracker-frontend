@@ -11,7 +11,7 @@ function ListaCategorias() {
     "deportes",
     "terror",
     "rol",
-    "moda",
+    "Divertidos",
     "musica",
     "simulacion",
     "cocina",
